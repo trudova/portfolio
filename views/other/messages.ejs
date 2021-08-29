@@ -1,0 +1,25 @@
+   <% layout('layouts/boilerplate') %> 
+   <%- include('../partials/flash.ejs') %> 
+   <div class="container">
+<% for( let msg of messages){ %>  
+<div class="card mb-3" >
+   <div class="row">
+      <div class="col-md-4">
+         <div class="card-title">
+         <h6>message from:  <%= msg.name %> </h6>
+         <h6> Email: <%= msg.email %> </h6>
+         </div>
+      </div>
+  <div class="col-md-8">
+     <div class="card-body">
+   <h6> Phoone <%= msg.phone %> </h6>
+   <p> Message: <%= msg.message %> </p>
+   </div>
+   </div>
+   </div>
+   <form action="/contacts/<%=msg._id%>?_method=DELETE" method="post">
+     <button  class="close-btn "><i class="fas fa-times"></i></button>
+   </form>
+</div>
+    <% } %> 
+</div>

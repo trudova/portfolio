@@ -1,0 +1,54 @@
+   <% layout('layouts/boilerplate') %> 
+   <%- include('../partials/flash.ejs') %> 
+    <header class="projects-hero">
+      <!-- section title -->
+      <div class="section-title">
+        <h1>To see my deplied projects</h1> <h2>click on the <span><i class="fas fa-home"></i></span>home icon on the project card</h2>
+        <div class="underline"></div>
+      </div>
+      <!--end of section title -->
+    </header>
+    <section class="section">
+      <div class="section-center projects-page-center">
+
+  <% for( let project  of projects){ %> 
+
+        <!-- single project -->
+        <article class="single-project">
+          <div class="project-container">
+            <img src="<%=project.image%> " alt="single project" />
+            <a href="<%=project.siteLink%>" class="project-icon" target="_blank">
+              <i class="fas fa-home"></i>
+            </a>
+          </div>
+          <div class="project-details">
+            <h4><%= project.projectName %></h4>
+            <p>
+             <%= project.description %> 
+            </p>
+            <div class="project-footer">
+              <span>
+                  <a href="<%=project.codeLink%>" target="_blank">
+                <i class="fab fa-github"></i>
+                </a>
+              </span>
+              <!-- delet button hidden -->
+              <% if(currentUser && project.author.equals(currentUser._id)){ %> 
+              <div>
+              <form action="/projects/<%=project._id%>?_method=DELETE" method="post"><button type="submit" class="btn">delete</button></form>
+                <a href="/projects/<%=project._id%>/edit">edit</a>
+              </div>
+              <% } %> 
+              <a href="<%=project.codeLink%>" target="_blank">source code</a>
+
+            </div>
+            
+          </div>
+        </article>
+        <!-- end of single project -->
+        <% } %> 
+      </div>
+    </section>
+
+
+

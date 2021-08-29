@@ -1,0 +1,123 @@
+  <nav class="nav" id="nav">
+      <div class="nav-center">
+          <!-- nav header  -->
+          <div class="nav-header">
+              <a href="/"><h1 class="nav-logo"><span>Liubov</span> Trudova </h1></a>
+              <button class="nav-btn" id="nav-btn"><i class="fas fa-bars"></i></button>
+          </div>
+          <!-- nav lincks  -->
+          <ul class="nav-links">
+              <li>
+                  <a href="/">Home</a>
+              </li>
+               <li>
+                  <a href="/about">About</a>
+              </li>
+               <li>
+                  <a href="/projects">Projects</a>
+              </li>
+               <li>
+                  <a href="/blog">Blog</a>
+              </li>
+               <li>
+                  <a href="/contacts">Contacts</a>
+              </li>
+              <!-- not public -->
+              <% if(!currentUser){%> 
+                <li>
+                  <a href="/register"> register</a>
+              </li>
+                <li>
+                  <a href="/login">login</a>
+              </li>
+              <% }else{ %> 
+                 <% if(currentUser.email === admin){ %> 
+                      <li>
+                  <a href="/blog/new"><i class="fas fa-bomb"></i></a>
+              </li>
+            
+               <li>
+                  <a href="/projects/new">  <i class="fas fa-location-arrow"></i></a>
+              </li>
+             
+              <li>
+                  <a href="/contacts/messages"><i class="fa fa-envelope"></i></a>
+              </li>
+                 <!-- registretion -->
+              
+                <li>
+                  <a href="/logout">logout</a>
+              </li>
+              <% }else{ %> 
+                 <li>
+                  <a href="/logout">logout</a>
+                </li>
+                <% } %> 
+                <% } %> 
+             
+          </ul>
+        
+         
+      </div>
+  </nav>
+<!-- end of nav bar  -->
+<!-- sider -->
+<aside class="sidebar" id="sidebar">
+    <div>
+        <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+         <ul class="sidebar-links">
+              <li>
+                  <a href="/">Home</a>
+              </li>
+               <li>
+                  <a href="/about">About</a>
+              </li>
+               <li>
+                  <a href="/projects">Projects</a>
+              </li>
+               <li>
+                  <a href="/blog">Blog</a>
+              </li>
+               <li>
+                  <a href="/contacts">Contacts</a>
+              </li>
+              <!-- not public -->
+                <% if(!currentUser){%> 
+                    
+                    <li>
+                        <a href="/register"> register</a>
+                    </li>
+                        <li>
+                        <a href="/login">login</a>
+                    </li>
+                    
+                    <% }else{ %> 
+                        <% if(currentUser.email === admin){ %> 
+               <li>
+                  <a href="/blog/new"><i class="fas fa-bomb"></i></a>
+              </li>
+               
+               <li>
+                  <a href="/projects/new">  <i class="fas fa-location-arrow"></i></a>
+              </li>
+              <li>
+                  <a href="/contacts/messages"><i class="fa fa-envelope"></i></a>
+              </li>
+
+                 <li>
+                  <a href="/logout">logout</a>
+              </li>
+              <% }else{ %>  
+                 <li>
+                  <a href="/logout">logout</a>
+              </li>
+                <% } %> 
+              <% } %>  
+          </ul>
+          <ul class="social-icons">
+              <li>
+              <a href="https://www.instagram.com/liubovtrudova/?hl=en" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+              </li>
+          </ul>
+    </div>
+</aside>

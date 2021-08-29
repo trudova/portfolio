@@ -1,0 +1,33 @@
+    <% layout('layouts/boilerplate') %> 
+    <div class="row">
+  <h1 class="text-center">Update Project</h1>
+  <div class="col-6 offset-3">
+
+
+ <form action="/projects/<%=project._id%>?_method=PUT" method="post" novalidate class="validated-form">
+       <div class="mb-3">
+        <label for="projectName" class="form-label">Title</label>
+        <input type="text" id="projectName" , value="<%= project.projectName %> " name="project[projectName]" class="form-control" required/>
+      </div>
+         <div class="mb-3">
+        <label for="image" class="form-label">Image URL</label>
+        <input type="text" id="image" , value="<%= project.image %> " name="project[image]" class="form-control" required/>
+      </div>
+
+        <div class="mb-3">
+        <label for="siteLink" class="form-label">link to the project</label>
+        <input type="text" id="siteLink" , name="project[siteLink]" value="<%= project.siteLink %> " class="form-control" required />
+      </div>
+        <div class="mb-3">
+        <label for="codeLink" class="form-label">link to the project code</label>
+        <input type="text" id="codeLink" class="form-control"  name="project[codeLink]"  value="<%= project.codeLink %> " required/>
+      </div>
+       <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" name="project[description]"cols="20"rows="10" class="form-control" required ><%= project.description %> </textarea>
+      </div>
+      <button class="btn mb-5">update project</button>
+    </form>
+    </div>
+     <a href="/projects" class="arrow mb-3"> <i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i>proj</a>
+    </div>

@@ -1,0 +1,56 @@
+   <% layout('layouts/boilerplate') %> 
+   <%- include('../partials/flash.ejs') %> 
+        <section class="section single-page">
+      <!-- section title -->
+      <div class="section-title">
+        <h1>Contact</h1>
+        <div class="underline"></div>
+      </div>
+      <!--end of section title -->
+      <div class="section-center contacts-way">
+        <!-- contact page-->
+        <div class=" page-info ">
+        <p>
+          If you are looking to get ahold of me, The best way to do so, would be send mesend me an email at: 
+          <a href="mailto:liubovtrudovaapplying@gmail.com">liubovtrudovaapplying@gmail.com</a>  <br>
+          You also can send me message through the form below. 
+    
+        </p>
+        <p>
+I am not a social person, so I dont get all social media people normaly have... I have only instagram, there is I mostly watch cute pictures of malamute puppies. However,
+          You can also reach out to me there: <span>  </span>
+              <a href="https://www.instagram.com/liubovtrudova/?hl=en" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </p>
+        </div>
+
+        <div class=" page-info ">
+        <form action="/contacts" method="post" novalidate class="validated-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">your name</label>
+                <input type="text" id="name", name="email[name]" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">your email</label>
+                <input type="email" id="email", name="email[email]" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">your phone</label>
+                <input type="text" id="phone", name="email[phone]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="message" class="form-label">your message</label>
+                <textarea id="message", name="email[message]" cols="30" rows="6" class="form-control" required></textarea>
+            </div>
+        <button class="btn mb-5">send message</button>
+    </form>
+        </div>
+      </div>
+    </section>
+   
+
+
+
+
+
+

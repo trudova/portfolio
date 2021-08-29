@@ -1,0 +1,72 @@
+   <% layout('layouts/boilerplate') %> 
+  <%- include('../partials/flash.ejs') %> 
+   <div class="row mb-7">
+      <div class="col-8 offset-2">
+
+ <div class="card mb-3 mt-3">
+  <img src="<%=post.image%> " class="card-img-top" alt="post image">
+  <div class="card-body">
+    <h5 class="card-title"><%= post.articleTitle %></h5>
+    <p class="card-text"><%= post.article %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <!-- <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li> -->
+   
+  </ul>
+
+<% if(currentUser && post.author.equals(currentUser._id)){ %> 
+  <div class="card-body">
+    <a href="/blog/<%=post._id%>/edit" class="btn">edit</a>
+    
+    <form action="/blog/<%= post._id%>?_method=DELETE" method="post">
+    <button  class="close-btn "><i class="fas fa-times"></i></button>
+    </form>
+
+  </div>
+<% } %> 
+
+  <div class="card-footer text-muted ">
+      <img src="/images/hero-img-small.jpeg" alt="author image" />
+      
+                <p>Author : <%= post.author.email%></p>
+  </div>
+</div>
+<% if(currentUser){ %> 
+<!-- comments form -->
+<form action="/blog/<%=post._id%>/comments" method="post" class="mb-3 validated-form" novalidate>
+<div class="mb-3">
+  <label for="body" class="form-label">comment it:</label>
+<textarea name="comment[body]" id="body" cols="30" rows="4" class="form-control" required></textarea>
+</div>
+<button class="btn">add</button>
+</form>
+<!-- end of coments form -->
+<% } %> 
+      </div>
+      <% for(let comment of post.comments){ %> 
+        <div class="row mb-7">
+      <div class="col-8 offset-2">
+        <%- include('../partials/flash.ejs') %> 
+         <div class=" bg-light card-body mb-3">
+          
+          <p>Comment: <%= comment.body %> </p>
+           <p class="card-subtitle text-muted mb-2">By: <%=comment.author.username  %> </p>
+
+           <% if(currentUser && comment.author.equals(currentUser._id)){ %> 
+          <!-- delet comment -->
+           <form action="/blog/<%= post._id%>/comments/<%=comment._id %>?_method=DELETE" method="post">
+            <button  class="btn"><i class="fas fa-times"></i></button>
+            </form>
+      <!--end of delet comment -->
+       <% } %> 
+          </div>
+        </div>
+     </div>
+      <% } %> 
+      <a href="/blog" class="arrow mb-5"> <i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i>blog</a>
+   </div>
+
+
+ 
+  
